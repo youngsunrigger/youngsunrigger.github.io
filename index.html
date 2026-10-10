@@ -148,12 +148,7 @@
   menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); });
   nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { closeMenu(); nav.querySelectorAll('a').forEach(a => a.classList.toggle('active', a === link)); }));
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.classList.contains('open')) { closeMenu(); menu.focus(); } });
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if (entry.isIntersecting) nav.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.hash === '#' + entry.target.id)); });
-    }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
-    ['projects', 'personal', 'tools', 'about', 'contact'].forEach(id => observer.observe(document.getElementById(id)));
-  }
+
 </script>
 </body>
 </html>
